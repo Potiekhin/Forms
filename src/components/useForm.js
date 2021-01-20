@@ -22,13 +22,14 @@ const useForm = (callback, validate) => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       callback();
     }
-  }, [errors]);
+  }, [errors, callback, isSubmitting]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors(validate(values));
     setIsSubmitting(true);
   };
+
   return {
     handleChange,
     handleSubmit,
